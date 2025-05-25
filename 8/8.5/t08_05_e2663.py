@@ -1,13 +1,11 @@
 n = int(input())
-words = [input().strip() for _ in range(n)]
+arr = list(map(int, input().split()))
+count = 0
 
 for i in range(n):
-    min_idx = i
-    for j in range(i + 1, n):
-        if words[j] < words[min_idx]:
-            min_idx = j
-    if min_idx != i:
-        words[i], words[min_idx] = words[min_idx], words[i]
+    for j in range(n - 1 - i):
+        if arr[j] > arr[j + 1]:
+            arr[j], arr[j + 1] = arr[j + 1], arr[j]
+            count += 1
 
-for word in words:
-    print(word)
+print(count)
